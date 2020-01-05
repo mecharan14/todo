@@ -31,6 +31,7 @@ export default class App extends Component{
         <button className={this.state.indexSelected === 2 ? "active" : ""}><i className="material-icons" onClick={this.selectIndex.bind(this, 2)}>calendar_today</i></button>
         <button className={this.state.indexSelected === 3 ? "active" : ""}><i className="material-icons" onClick={this.selectIndex.bind(this, 3)}>link</i></button>
       </div>
+      <div className="toast" id="toast">Toast</div>
       </>
     );
   }

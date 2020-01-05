@@ -13,6 +13,18 @@ export default class ToDos extends Component{
         this.getData();
     }
 
+    toast = (msg)=>{
+        let el = document.querySelector("#toast");
+    el.innerHTML = msg;
+    el.style.opacity = "1";
+    el.style.bottom = "0";
+    setTimeout(()=>{
+        el.style.opacity = "0";
+        el.style.bottom = "-20%";
+    },2000)
+    }
+
+
     
       closeAdd = () => {
         let el = document.querySelector(".addBox");
@@ -55,9 +67,14 @@ export default class ToDos extends Component{
 
             fetch("https://suryacharan.ga/to-do/operations.php?action="+(truth === "1" ?"done" : "undone")+"&id="+id)
             .then(res=>res.text())
-            .then(data=>console.log(data))
+            .then(data=>{
+                    this.toast((truth === "1" ?"Done" : "Undone"))
+                
+            })
             .catch(err=>console.log("Error: ",err))
     }
+
+
 
     checkAdd = () =>{
         let val = document.querySelector("#inputAdd").value;
@@ -90,6 +107,23 @@ export default class ToDos extends Component{
 
             
         }
+        this.toast("Added");
+        this.closeAdd();
+    }
+
+    delTodo = (id, e) =>{
+        let ch = window.confirm("Do you really want to do?");
+        if(ch){
+            fetch("https://suryacharan.ga/to-do/operations.php?action=del&id="+id)
+            .then(res=>res.text())
+            .then(data=>{
+                if(data === "success"){
+                    this.toast("Deleted");
+                    this.getData()
+                }
+            })
+        }
+        
     }
 
     render(){
@@ -99,7 +133,7 @@ export default class ToDos extends Component{
         let items = [<AddBox closeAdd={this.closeAdd} key="addBox" checkAdd={this.checkAdd}/>];
         this.state.data.forEach(each=>{
             if(parseInt(each.cat) === this.props.selected){
-                items.push(<ToDo key={each.id} id={each.id} done={each.stats} cat={each.cat} item={each.item} checkOf={this.checkEm.bind(this, each.id)}/>);
+                items.push(<ToDo key={each.id} id={each.id} delTodo={this.delTodo.bind(this, each.id)} done={each.stats} cat={each.cat} item={each.item} checkOf={this.checkEm.bind(this, each.id)}/>);
             }
         })
         return(<>{items}</>)

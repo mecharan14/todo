@@ -14,20 +14,7 @@
     <title>Remainders</title>
   </head>
   <body>
-    <script>
-      if(window.matchMedia('(prefers-color-scheme:dark)').matches){
-        document.querySelector("meta[name=theme-color]").content = "#000000";
-      }
-      const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  darkModeMediaQuery.addListener((e) => {
-    const darkModeOn = e.matches;
-    if(darkModeOn){
-      document.querySelector("meta[name=theme-color]").content = "#000000";
-    }else{
-      document.querySelector("meta[name=theme-color]").content = "#ffffff";
-    }
-  });
-      </script>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>

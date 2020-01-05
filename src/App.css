@@ -2,6 +2,7 @@
   --bg: white;
   --cl: black;
   --sc: #EFEFEF;
+  --tc: rgba(0,0,0,.7);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -9,6 +10,7 @@
     --bg: black;
     --cl: white;
     --sc: #424242;
+    --tc: rgba(255,255,255,.7);
   }
 }
 
@@ -140,4 +142,29 @@ body{
   box-shadow: 0 5px 8px var(--sc);
   border-radius: 5px;
   padding: 8px;
+}
+
+.delBtn{
+  background-color: transparent;
+  color: red;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding: 16px;
+  transform: translate(0, -50%);
+}
+
+.toast{
+  position: fixed;
+  background: var(--tc);
+  transform: translate(-50%,-50%);
+  left: 50%;
+  color: var(--bg);
+  padding: 16px;
+  border-radius: 8px;
+  transition: all .2s ease;
+  opacity: 0;
+  bottom: -20%;
 }
