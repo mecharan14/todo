@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ToDos from './ToDos';
 
+
 export default class App extends Component{
   constructor(){
     super();
@@ -12,11 +13,16 @@ export default class App extends Component{
     this.setState({indexSelected: n});
   }
 
+  openAdd = () =>{
+    let el = document.querySelector(".addBox");
+    el.style.display = "block";
+  }
 
   render(){
     return(
       <>
-      <nav className="nav">Remainders</nav>
+      <nav className="nav">Remainders <button className="addBtn" onClick={this.openAdd}><i className="material-icons">add</i></button></nav>
+      
       <ToDos selected={this.state.indexSelected}/>
       <div className="gap"></div>
       <div className="footer">

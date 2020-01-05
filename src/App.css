@@ -4,15 +4,31 @@
   --sc: #EFEFEF;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root{
+    --bg: black;
+    --cl: white;
+    --sc: #424242;
+  }
+}
+
+body{
+  background-color: var(--bg);
+  color: var(--cl);
+  transition: background-color .5s ease;
+}
+
 .nav{
   width: 100%;
   background-color: var(--bg);
-  box-shadow: 0 0 10px 0 lightgrey;
+  box-shadow: 0 0 10px 0 var(--sc);
   padding: 16px;
   text-align: center;
   box-sizing: border-box;
   font-weight: bold;
   color: var(--cl);
+  position: relative;
+  transition: background-color .5s ease;
 }
 
 .footer{
@@ -21,13 +37,16 @@
   width: 100%;
   display: flex;
   background-color: var(--bg);
-  box-shadow: 0 0 10px 0 lightgrey;
+  color: var(--cl);
+  box-shadow: 0 0 10px 0 var(--sc);
+  transition: background-color .5s ease;
 }
 
 .footer button{
   width: 100%;
   padding: 16px;
   background-color: var(--bg);
+  color: var(--cl);
   border: none;
   outline: none;
   transition: all .2s ease;
@@ -49,7 +68,10 @@
   text-overflow: ellipsis;
   position: relative;
   padding-left: 35px;
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid var(--sc);
+  background-color: var(--bg);
+  color: var(--cl);
+  transition: background-color .5s ease;
 }
 
 .gap{
@@ -60,3 +82,62 @@
   text-decoration: line-through;
 }
 
+.addBtn{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 16px;
+  color: var(--cl);
+}
+
+.addBtn:focus{
+  background-color: var(--sc);
+}
+
+.addBox{
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: var(--bg);
+  color: var(--cl);
+  z-index: 5;
+  padding: 16px;
+  width: 90%;
+  box-shadow: 0 0 50px 0 var(--sc);
+  transition: background-color .5s ease;
+  display: none;
+}
+
+.inputBox{
+  padding: 16px;
+  border: 1px solid var(--sc);
+  margin: 8px;
+  width: 80%;
+}
+
+.addBtn2{
+  padding: 8px;
+  margin: 8px;
+  color: var(--cl);
+  background-color: var(--bg);
+  border: 1px solid var(--cl);
+  width: 30%;
+  transition: background-color .5s ease;
+}
+
+.removeBox{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  border: none;
+  color: white;
+  box-shadow: 0 5px 8px var(--sc);
+  border-radius: 5px;
+  padding: 8px;
+}
