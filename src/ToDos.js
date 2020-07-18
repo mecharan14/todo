@@ -39,7 +39,7 @@ export default class ToDos extends Component{
             this.setState({isLoaded: true, data: [...list,...syncables]})
         }else{
             let syncables = JSON.parse(localStorage.getItem("syncables"));
-            fetch("https://suryacharan.ga/to-do/operations.php?action=getAll")
+            fetch("https://suryacharan.xyz/to-do/operations.php?action=getAll")
             .then(res=>res.json())
             .then(data=>{
                 if(syncables != null){
